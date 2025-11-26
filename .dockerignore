@@ -1,0 +1,5 @@
+# 巨大で不安定なnode_modulesをDockerビルドから無視する！
+node_modules/
+
+# Dev Containerの設定フォルダも通常は無視する
+.devcontainer/
