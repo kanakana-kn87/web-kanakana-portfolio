@@ -7,8 +7,13 @@
 		"context": "..",
 		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
 		"dockerfile": "../Dockerfile"
-	}
-
+	},
+	"containerEnv": {
+    // この設定が入ってるか確認してね！
+    "CHOKIDAR_USEPOLLING": "true",
+    "WATCHPACK_POLLING": "true"
+  },
+	"remoteUser": "root"
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
