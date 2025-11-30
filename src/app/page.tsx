@@ -5,6 +5,7 @@ import R3FLogo from "@/components/logo";
 export default function Home() {
   return (
     <>
+    あ
       <R3FLogo />
     </>
   );
