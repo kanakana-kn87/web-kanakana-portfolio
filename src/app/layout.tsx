@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Zen_Kurenaido } from "next/font/google";
+import { Theme } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css"; // スタイルシートのインポート
+import AosInit from "@/components/AosInit";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import Header from "@/components/structure/Header";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const zenKurenaido = Zen_Kurenaido({
+  subsets: ["latin-ext"],
+  display: "swap",
+  fallback: ["sans-serif"],
+  style: ["normal"],
+  preload: true,
+  weight: ["400"],
+  variable: "--font-zen-kurenaido",
 });
 
 export const metadata: Metadata = {
@@ -22,10 +26,35 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 🔽 TypeScriptのエラーが出ないように、変数名のオブジェクトを外部に出すよ！
+  // 🔽 'var()'を使って、Next.jsのCSS変数の値を呼び出す！
+  const customStyles = {
+    '--font-body': 'var(--font-zen-kurenaido)',
+    '--font-heading': 'var(--font-zen-kurenaido)',
+    '--default-font-family': 'var(--font-zen-kurenaido)',
+  } as React.CSSProperties; // 👈 キャストはここで使う！
+
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+    // 🔽 変更: className={...} は HTMLタグに残す！
+    // 🔽 Themeコンポーネントに、直接カスタムCSS変数を上書きする！
+    <html lang="ja" className={zenKurenaido.variable} style={customStyles}>
+
+      <AosInit />
+      <body>
+        {/* 🔽 Themeコンポーネントは、このHTMLタグからフォントの設定を継承するよ！ */}
+        <Theme
+          accentColor="indigo"
+          appearance="dark"
+          panelBackground="solid"
+          // 🔽 3. すべてのコンポーネントの「角の丸み」を統一する
+          radius="large"
+          // 🔽 4. フォントの太さを細かく調整する
+          scaling="100%">
+
+
+          <Header />
+          {children}
+        </Theme>
       </body>
     </html>
   );
