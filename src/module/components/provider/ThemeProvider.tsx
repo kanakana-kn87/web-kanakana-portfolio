@@ -2,7 +2,7 @@
 "use client"; // クライアントコンポーネントであることを宣言！
 
 import { Theme } from "@radix-ui/themes"; // 🌟 該当ライブラリのThemeコンポーネントをインポート！
-import { useTheme } from "@/hooks/useTheme"; // かなかなのカスタムフックをインポート！
+import { useTheme } from "@/module/lib/hooks/useTheme"; // かなかなのカスタムフックをインポート！
 import React from "react";
 
 interface CustomThemeProviderProps {
