@@ -1,6 +1,6 @@
 {
   "name": "kanakana-portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "initTailwind": "tailwindcss init -p",
@@ -13,8 +13,7 @@
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@fortawesome/react-fontawesome": "^3.1.1",
-    "@fullpage/react-fullpage": "^0.1.49",
-    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@next/third-parties": "^16.0.7",
     "@radix-ui/themes": "^3.2.1",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.0",
@@ -24,6 +23,7 @@
     "@types/three": "^0.181.0",
     "aos": "^2.3.4",
     "core-js": "^3.47.0",
+    "framer-motion": "^12.23.25",
     "fullpage.js": "^4.0.37",
     "js-cookie": "^3.0.5",
     "lit": "^3.3.1",

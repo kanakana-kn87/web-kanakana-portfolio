@@ -4,7 +4,7 @@ import Rellax from "rellax";
 
 export default function RellaxInit() {
   useEffect(() => {
-    const rellax = new Rellax('.rellax');
+    const rellax = new Rellax(".rellax");
     return () => {
       rellax.destroy();
     };

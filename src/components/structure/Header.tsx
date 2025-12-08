@@ -3,7 +3,7 @@
 import R3FLogo from "../logo";
 import NavigationMenu from "../Navigation";
 import { Heading, Box, Flex } from "@radix-ui/themes";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 import styles from "./header.module.scss";
 export default function Header() {
   return (

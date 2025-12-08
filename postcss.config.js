@@ -2,10 +2,9 @@
 
 module.exports = {
   plugins: [
-    
     // 2. 他のプラグインも require() に合わせるよ！
-    require('postcss-preset-env'),
-    require('autoprefixer'),
-    require('cssnano')
-  ]
+    require("postcss-preset-env"),
+    require("autoprefixer"),
+    require("cssnano"),
+  ],
 };

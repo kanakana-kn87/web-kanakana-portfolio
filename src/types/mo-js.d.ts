@@ -1,1 +1,1 @@
-declare module 'mo-js';
+declare module "mo-js";
