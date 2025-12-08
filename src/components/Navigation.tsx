@@ -15,7 +15,7 @@ export default function NavigationMenu(): React.JSX.Element {
       {/* 2. トリガー（ボタン）: 爆発エフェクトボタンをトリガーにする！ */}
       {/* 🔽 asChild は使わず、ExplodeButton が Trigger の役割を果たすよ！ */}
       <DropdownMenu.Trigger>
-        <Button>
+        <Button variant="solid">
           <FontAwesomeIcon icon={faBars} />
         </Button>
       </DropdownMenu.Trigger>
@@ -25,7 +25,7 @@ export default function NavigationMenu(): React.JSX.Element {
 
         {/* メニューアイテム: asChildでNextLinkをItemに渡すよ！ */}
         <DropdownMenu.Item asChild>
-          <Link href="/">Home</Link>
+          <Button variant="surface"><Link href="/">Home</Link></Button>
         </DropdownMenu.Item>
         <DropdownMenu.Separator>
 
@@ -34,7 +34,7 @@ export default function NavigationMenu(): React.JSX.Element {
         </DropdownMenu.Separator>
 
         <DropdownMenu.Item asChild>
-          <Link href="about/">About</Link>
+          <Button variant="surface"><Link href="about/">About</Link></Button>
         </DropdownMenu.Item>
 
       </DropdownMenu.Content>
