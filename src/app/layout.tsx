@@ -7,6 +7,8 @@ import { CustomThemeProvider } from "@/components/ThemeProvider";
 import "@radix-ui/themes/styles.css";
 import AosInit from "@/components/AosInit"; // 💡 クライアント側の状態管理担当
 import Header from "@/components/structure/Header"; // 💡 クライアントコンポーネントになっていることを確認
+import RellaxInit from "@/components/RellaxInit";
+import { Box } from "@radix-ui/themes";
 // フォント設定
 const zenKurenaido = Zen_Kurenaido({
   subsets: ["latin-ext"],
@@ -41,14 +43,18 @@ export default function RootLayout({
     <html lang="ja" className={zenKurenaido.variable} style={customStyles}>
 
       <AosInit />
+      <RellaxInit />
 
       {/* 💡 修正ポイント３：<body> は <html> の直下（Hydration対策） */}
       <body>
           {/* Radix UIのTheme。appearanceにはサーバーで読み込んだ初期値を渡す。 */}
           <CustomThemeProvider>
             {/* HeaderとchildrenはProviderの管理下にあるので、useThemeが使える */}
-            <Header />
+            <Box className="rellax"data-rellax-speed="10"><Header /></Box>
+            <main className="rellax">
             {children}
+
+            </main>
           </CustomThemeProvider>
       </body>
     </html>
