@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 export default function Page() {
   const t = useTranslations('Home');
   return (
+    <>
     <Section>
       <Heading as="h2">{t("ようこそ")}</Heading>
       <Box>
@@ -12,5 +13,13 @@ export default function Page() {
         <Text>{t("説明")}</Text>
       </Box>
     </Section>
+    <Section>
+      <Heading as="h2">{t("なぜこのポートフォリオをつくったか")}</Heading>
+      <Box>
+        <Text>{t("目的1")}</Text><br/>
+        <Text>{t("目的2")}</Text>
+      </Box>
+    </Section>
+    </>
   );
 }
