@@ -2,14 +2,7 @@
 export const dynamic = "force-dynamic";
 
 import type { Metadata } from "next";
-import { Zen_Kurenaido } from "next/font/google";
-import { CustomThemeProvider } from "@/module/components/provider/ThemeProvider";
-import { GoogleTagManager } from "@next/third-parties/google"
 import "@radix-ui/themes/styles.css";
-import AosInit from "@/module/components/AosInit"; // 💡 クライアント側の状態管理担当
-import Header from "@/module/components/organism/Header"; // 💡 クライアントコンポーネントになっていることを確認
-import RellaxInit from "@/module/components/RellaxInit";
-import { Box } from "@radix-ui/themes";
 import getServerConfig from "@/module/lib/server/config";
 
 const config = getServerConfig(); 
@@ -25,33 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  // 🔽 カスタムCSS変数（フォント設定）
-  const customStyles = {
-    "--font-body": "var(--font-zen-kurenaido)",
-    "--font-heading": "var(--font-zen-kurenaido)",
-    "--default-font-family": "var(--font-zen-kurenaido)",
-  } as React.CSSProperties;
-
   return (
     // 💡 修正ポイント２：<html>の直下に余計な空白を入れない（Hydration対策）
     <html lang={config.app.lang as string } suppressHydrationWarning>
-
-      <GoogleTagManager gtmId={process.env.GTM as string} />
-
-      <AosInit />
-      <RellaxInit />
-
       {/* 💡 修正ポイント３：<body> は <html> の直下（Hydration対策） */}
       <body suppressHydrationWarning>
-        {/* Radix UIのTheme。appearanceにはサーバーで読み込んだ初期値を渡す。 */}
-        <CustomThemeProvider>
-          {/* HeaderとchildrenはProviderの管理下にあるので、useThemeが使える */}
-          <Box className="rellax" data-rellax-speed="-10" data-rellax-zindex="5"><Header /></Box>
-          <main className="rellax"data-rellax-speed="0" data-rellax-zindex="0">
-            {children}
-
-          </main>
-        </CustomThemeProvider>
+        {children}
       </body>
     </html>
   );

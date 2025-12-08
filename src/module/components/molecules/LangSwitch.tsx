@@ -1,49 +1,25 @@
-// components/molecules/LangSwitch.tsx
 "use client";
 
-import { useTranslation } from 'react-i18next';
-import { Button, Flex } from '@radix-ui/themes';
-import { useParams, useRouter, usePathname } from 'next/navigation';
+import { useTranslations, useLocale } from 'next-intl';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { Button } from "@radix-ui/themes";
 
 export default function LangSwitch() {
-  const { t } = useTranslation('common');
-  const router = useRouter();
-  const params = useParams();
-  const pathname = usePathname();
+  const t = useTranslations('Index');
+  const currentLocale = useLocale(); // 💡 next-intlの現在の言語取得フック
+  const pathname = usePathname(); // 💡 現在のパス（言語コードは除く）
 
-  const currentLang = params.lang as string || 'ja';
+  // 現在のパスから言語コード部分を削除する処理
+  const pathWithoutLocale = pathname.replace(`/${currentLocale}`, '') || '/';
 
-  const changeLanguage = (newLang: string) => {
-    
-    // 1. 現在のURLパスから言語コード（例: /ja）を取り除く
-    const pathWithoutLang = pathname.replace(`/${currentLang}`, '');
-
-    // 2. 💡 修正ポイント: パスが空('')の場合はルートパス('/')に置き換える
-    const baseUri = pathWithoutLang === '' ? '/' : pathWithoutLang;
-
-    // 3. 新しい言語コードとベースURIを結合して新しいURLを生成
-    // 例: /en + /about => /en/about
-    // 例: /ja + / => /ja
-    const newPath = `/${newLang}${baseUri}`;
-
-    // 4. Next.jsのルーターで新しいURLに遷移
-    router.push(newPath);
-  };
+  const targetLocale = currentLocale === 'ja' ? 'en' : 'ja';
 
   return (
-    <Flex gap="2">
-      <Button 
-        onClick={() => changeLanguage('en')}
-        variant={currentLang === 'en' ? 'solid' : 'soft'}
-      >
-        EN
-      </Button>
-      <Button 
-        onClick={() => changeLanguage('ja')}
-        variant={currentLang === 'ja' ? 'solid' : 'soft'}
-      >
-        日本語
-      </Button>
-    </Flex>
+    <Button>
+      <Link href={`/${targetLocale}${pathWithoutLocale}`}>
+        {targetLocale.toUpperCase()}
+      </Link>
+    </Button>
   );
 }

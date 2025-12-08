@@ -5,6 +5,7 @@ import NavigationMenu from "../molecules/Navigation";
 import { Heading, Box, Flex } from "@radix-ui/themes";
 import { useConfig } from "@/module/lib/hooks/useConfig";
 import styles from "./header.module.scss";
+import LangSwitch from "../molecules/LangSwitch";
 
 export default function Header() {
   const { config, isLoading, error } = useConfig();
@@ -31,8 +32,10 @@ export default function Header() {
               </Heading>
 
             </Flex>
+
           </Box>
           <Box>
+            <LangSwitch />
             <NavigationMenu />
           </Box>
         </Flex>

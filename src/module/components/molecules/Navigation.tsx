@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // Next.jsのLinkとFramer Motion
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocale } from "next-intl";
 
 // 画面外からヒュッて出てくる動きの設計図（創律光案）だよ！
 // cameCaseを使ってるよ！
@@ -26,6 +27,7 @@ const drawerVariants = {
 export default function NavigationMenu(): React.JSX.Element {
   // ドロワーが開いているかどうかの状態を管理 (cameCaseだよ！)
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const locale = useLocale();
 
   // ドロワーを開閉する関数 (cameCaseだよ！)
   const closeDrawer = () => setIsDrawerOpen(false);
@@ -78,7 +80,7 @@ export default function NavigationMenu(): React.JSX.Element {
             </div>
 
             {/* メニューアイテム */}
-            <Link href="/" passHref legacyBehavior>
+            <Link href={`${locale}/`} passHref legacyBehavior>
               {/* asChildでButtonとLinkを連携！onClickでドロワーを閉じるよ！ */}
               <Button onClick={closeDrawer} asChild size="3" variant="surface" style={{ justifyContent: "flex-start" }}>
                 {/* motion.aでホバーアニメーションを付けるよ！ */}
@@ -91,7 +93,7 @@ export default function NavigationMenu(): React.JSX.Element {
             
             <Separator size="4" my="1" />
 
-            <Link href="/about" passHref legacyBehavior>
+            <Link href={`${locale}/about/`} passHref legacyBehavior>
               <Button onClick={closeDrawer} asChild size="3" variant="surface" style={{ justifyContent: "flex-start" }}>
                  <motion.a whileHover={{ x: 5 }}>
                   <FontAwesomeIcon icon={faAddressCard} />
