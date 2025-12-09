@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 // Radix Themesの部品
-import { Button, Separator } from "@radix-ui/themes";
+import { Button, Separator, Box } from "@radix-ui/themes";
 // アイコン
 import { faBars, faHome, faAddressCard, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -45,6 +45,7 @@ export default function NavigationMenu(): React.JSX.Element {
       </Button>
 
       {/* 2. AnimatePresenceでドロワーの出し入れを監視するよ！ */}
+      <Box data-rellax-zindex="50">
       <AnimatePresence>
         {isDrawerOpen && (
           // ドロワー本体 (motion.divでアニメーションを適用！)
@@ -106,6 +107,7 @@ export default function NavigationMenu(): React.JSX.Element {
           </motion.div>
         )}
       </AnimatePresence>
+      </Box>
       
       {/* 3. オーバーレイ（背景を暗くする部分） */}
       <AnimatePresence>
