@@ -1,10 +1,10 @@
 "use client"
 
-import R3FLogo from "../molecules/logo";
+import R3FLogo from "../molecules/Logo";
 import NavigationMenu from "../molecules/Navigation";
 import { Heading, Box, Flex } from "@radix-ui/themes";
 import { useConfig } from "@/module/lib/hooks/useConfig";
-import styles from "./header.module.scss";
+import styles from "@/resource/style/module/header.module.scss";
 import LangSwitch from "../molecules/LangSwitch";
 
 export default function Header() {
